@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 export const Container = styled.View`
   flex: 1;
   padding: 10px;
+  background: #fff;
 `;
 
 export const SearchContainer = styled.View`
@@ -41,11 +42,12 @@ export const ResultsContainer = styled.View`
 `;
 
 export const ItemView = styled.View`
-  background-color: #eee;
-  margin-top: 20px;
+  background-color: #eeff;
+  margin-top: 10px;
   padding: 10px;
   flex-direction: row;
   align-items: center;
+  border-radius: 4px;
 `;
 
 export const Poster = styled.Image`
@@ -66,7 +68,7 @@ export const Title = styled.Text`
 `;
 
 export const FavIcon = styled(Icon).attrs((props) => ({
-  color: props.oi,
+  color: props.favorited ? '#65376A' : '#fff',
 }))`
   margin: 0 10px;
 `;

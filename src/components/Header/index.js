@@ -1,14 +1,19 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 
 import { Container, Title, Welcome } from './styles';
 
-const Header = () => {
+const Header = ({ title }) => {
   return (
     <Container>
-      <Title>Cinema APP</Title>
+      <Title>{title}</Title>
       <Welcome>Bem-vindo ao mundo espetacular do cinema</Welcome>
     </Container>
   );
+};
+
+Header.propTypes = {
+  title: PropTypes.string.isRequired,
 };
 
 export default Header;

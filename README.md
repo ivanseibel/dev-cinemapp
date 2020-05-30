@@ -1,35 +1,108 @@
+<p align="center">
+  <img src="./cinema-app.gif" alt="cinema-app" width="200px">
+</p>
+
 # dev-cinemapp
 
-### Olá amigx,
+# Descrição Geral
 
-### Seja bem vindx ao nosso desafio!
+## Interface Front-End
 
-Nosso passatempo favorito nessa quarentena tem sido assistir filmes e seriados, por isso pensamos em desenvolver uma solução que nos ajude na hora de selecionar o que mais gostamos. Caso você aceite o nosso desafio, precisamos que você implemente um sistema (fique a vontade pra escolher entre web ou mobile) onde será possível buscar por filmes e series utilizando a API (http://www.omdbapi.com/). Com todos esses filmes a nossa disposição queremos basicamente separar nossos favoritos, para que possamos encontrá-los facilmente depois. Portanto a sua solução deve:
+Como o aplicativo deveria rodar de forma fluida obrigatoriamente em dispositivos móveis, optei pelo React Native para construir uma aplicação mobile.
 
-- Permitir a busca por filmes que gostamos
-- Listar os filmes encontrados
-- Permitir que escolhamos nosso filmes favoritos
-- Permitir que removamos um filme de nossos favoritos (às vezes um filme enjoa)
-- Listar nossos filmes favoritos
+Devido ao uso de ícones personalizados (react-native-vector-icons), e por ter sido construído utilizando um PC com linux e emulador Android, este aplicativo precisará de alguns ajustes para rodar em um dispositivo com iOS.
 
-Para auxiliar você nesse processo fizemos um protótipo rápido utilizando o Figma. Se quiser conferir é só seguir o link:
+## Principais bibliotecas utilizadas
 
+- react-redux: compartilhamento de conteúdo entre componentes
+- redux-persist + @react-native-community/async-storage: para persistência dos dados através do Redux.
+- axios: cliente HTTP utilizado para a requisição GET com a api do site http://www.omdbapi.com/
+- react-navigation: roteamento e navegação entre telas
+- styled-components: sintaxe CSS para componentes React
+
+## Descrição das telas
+
+### Search
+
+Tela aberta inicialmente quando o aplicativo é carregado. A lista de filmes deve conter o poster do filme, o título e o ano de lançamento.
+
+A partir dela o usuário deve poder:
+
+- Pesquisar filmes por título.
+- Rolar a tela com "scroll infinito" (paginação automática)
+- Marcar um filme como favorito.
+- Desmarcar um filme como favorito.
+- Navegar até a tela de favoritos tocando no botão Favoritos.
+
+### Favoritos
+
+Esta tela exibe a lista de filmes marcados como favorito.
+A lista de filmes favoritos deve conter o poster do filme, o título e o ano de lançamento.
+
+A partir dela o usuário deve poder:
+
+- Retirar um filme da lista de favoritos.
+- Navegar para a tela de pesquisa.
+
+## Persistência de dados
+
+Para armazenamento de dados foi adotada uma combinação de Redux + AsyncStorage, com o processo de persistência ocorrendo integrado, de forma transparente.
+
+O Redux ofereceu a possibilidade de compartilhar de uma forma mais simples a lista dos filmes favoritos entre as telas.
+
+## Modelo Hooks
+
+O modelo Hooks foi escolhido ao invés do tradicional modelo de classes devido principalmente à agilidade de desenvolvimento e diminuição da verbosidade do código.
+
+## TODO
+
+Algumas possíveis melhorias que foram identificadas nas primeiras experimentações do aplicativo:
+
+- Adicionar splash-screen na abertura do app.
+- Adicionar categoria de favoritos para escolher quando favorita um filme.
+- Adicionar filtro de ano na pesquisa.
+
+## Para executar o código
+
+Clone o repositório
+
+```bash
+$ git clone https://github.com/ivanseibel/dev-cinemapp
 ```
-https://www.figma.com/proto/UE8zfSxxf8K0TzpgslbYhz/CinemAPP?node-id=1%3A28&scaling=contain
+
+Acesse a pasta do repositório
+
+```bash
+$ cd dev-cinemapp
 ```
 
-Para facilitar um pouco mais as coisas, já deixamos separada uma chave de acesso para a API (ou você pode criar a sua também):
+Atualizar os pacotes
 
+```bash
+$ yarn
 ```
-Chave de API: 925eba28
-Exemplo requisição: GET http://www.omdbapi.com/?apikey=925eba28&s=batman
+
+Rodar o servidor para fazer o live reload
+
+```bash
+$ yarn start
+
+# ou npx react-native start
 ```
 
-Você pode desenvolver uma solução web ou mobile (react-native), se escolher a primeira opção é importante que consigamos utilizá-la também em nossos celulares.
+Compilar e enviar a aplicação para o dispositivo móvel android
 
-## Entrega da sua solução
+```bash
+$ yarn android
 
-Deixe bem claro suas premissas, suposições e como executamos seu código. Para entregar essa solução, de um “fork” neste repositório e nos mande o link do novo repositório quando finalizar a tarefa.
+# ou npx react-native run-android
+```
 
+Compilar e enviar a aplicação para o dispositivo móvel iOS
 
-No mais aguardamos seu retorno. Boa sorte :)
+```bash
+$ yarn ios
+
+# ou npx react-native run-ios
+# não foi testado com ios
+```
